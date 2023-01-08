@@ -1,6 +1,5 @@
 part of 'pages.dart';
 
-
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
 
@@ -9,6 +8,22 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    //NOTE Timer
+    Timer(
+      const Duration(seconds: 2),
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container();
