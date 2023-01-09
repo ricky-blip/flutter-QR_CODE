@@ -26,6 +26,12 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "QR CODE with Firebase",
+        ),
+      ),
+    );
   }
 }
