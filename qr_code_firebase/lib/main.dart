@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_code_firebase/controller/controller.dart';
 import 'package:qr_code_firebase/pages/pages.dart';
 
 import 'firebase_options.dart';
@@ -10,6 +11,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final authcontroller = AuthController();
+
   runApp(MyApp());
 }
 
