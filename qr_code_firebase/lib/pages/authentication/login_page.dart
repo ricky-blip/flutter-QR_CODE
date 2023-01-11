@@ -8,13 +8,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //NOTE Field
-  final AuthController authC = AuthController();
-  final LoginController loginC = LoginController();
+  //Access Controller
+  AuthController authController = AuthController();
+  LoginController loginC = LoginController();
 
+  //NOTE Field
   final TextEditingController emailC =
       TextEditingController(text: "admin@gmail.com");
   final TextEditingController passC = TextEditingController(text: "admin123");
+
+  //Function
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +67,28 @@ class _LoginPageState extends State<LoginPage> {
           ),
           const SizedBox(height: 40),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              setState(() {});
               if (loginC.isLoading) {
-                // . . . . .
+                if (emailC.text.isNotEmpty && passC.text.isNotEmpty) {
+                  loginC.isLoading;
+                  Map<String, dynamic> hasil =
+                      await authController.login(emailC.text, passC.text);
+                  loginC.isLoading;
+
+                  if (hasil['error'] == true) {
+                    Text("Error, ${hasil["message"]}");
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
+                  }
+                } else {
+                  Text("email pass diisi");
+                }
               }
             },
             style: ElevatedButton.styleFrom(
@@ -76,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(9),
               ),
             ),
-            child: Text(loginC.isLoading ? "LOGIN" : "LOADING..."),
+            // child: Text(loginC.isLoading ? "LOGIN" : "LOADING..."),
+            child: Text("LOGIN"),
           ),
         ],
       ),
