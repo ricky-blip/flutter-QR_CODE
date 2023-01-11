@@ -9,7 +9,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //NOTE Field
-  bool isHidden = true;
+  final AuthController authC = AuthController();
+  final LoginController loginC = LoginController();
+
   final TextEditingController emailC =
       TextEditingController(text: "admin@gmail.com");
   final TextEditingController passC = TextEditingController(text: "admin123");
@@ -41,17 +43,19 @@ class _LoginPageState extends State<LoginPage> {
           TextField(
             controller: passC,
             autocorrect: false,
-            obscureText: isHidden,
+            obscureText: loginC.isHidden,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: "Password",
               suffixIcon: IconButton(
                 onPressed: () {
                   setState(() {
-                    isHidden = !isHidden;
+                    loginC.isHidden = !loginC.isHidden;
                   });
                 },
-                icon: Icon(isHidden ? Icons.visibility : Icons.visibility_off),
+                icon: Icon(
+                  loginC.isHidden ? Icons.visibility : Icons.visibility_off,
+                ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
@@ -62,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
           ElevatedButton(
             onPressed: () {
               // if (condition) {
-                
+
               // }
             },
             style: ElevatedButton.styleFrom(

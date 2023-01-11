@@ -12,7 +12,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  final authcontroller = AuthController();
+  const AuthController();
 
   runApp(MyApp());
 }
