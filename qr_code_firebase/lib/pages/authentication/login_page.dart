@@ -65,9 +65,9 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(height: 40),
           ElevatedButton(
             onPressed: () {
-              // if (condition) {
-
-              // }
+              if (loginC.isLoading) {
+                // . . . . .
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(9),
               ),
             ),
-            child: const Text("LOGIN"),
+            child: Text(loginC.isLoading ? "LOGIN" : "LOADING..."),
           ),
         ],
       ),
